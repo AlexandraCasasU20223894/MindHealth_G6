@@ -1,5 +1,3 @@
-package mhg6.dtos;
-
 import lombok.*;
 
 @Data
