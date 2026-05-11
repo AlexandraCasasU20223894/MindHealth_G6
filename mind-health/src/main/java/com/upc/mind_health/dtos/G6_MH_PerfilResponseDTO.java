@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class G6_MH_UsuarioPerfilDTO {
+public class G6_MH_PerfilResponseDTO {
     private Long idUsuario;
     private String nombre;
     private String correo;
@@ -15,4 +15,5 @@ public class G6_MH_UsuarioPerfilDTO {
     private String genero;
     private LocalDate fechaRegistro;
     private String rol;
+    private Boolean cuentaActiva;
 }

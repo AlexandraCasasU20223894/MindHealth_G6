@@ -92,7 +92,7 @@ public class G6_MH_UsuarioService {
                 .build();
     }
     
-    public G6_MH_PerfilResponseDTO actualizarPerfil(Long id, G6_MH_PerfilUpdateDTO dto) {
+    public G6_MH_PerfilResponseDTO actualizarPerfil(Long id, G6_MH_PerfilResponseDTO dto) {
         G6_MH_Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 

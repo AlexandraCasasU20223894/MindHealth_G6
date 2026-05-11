@@ -6,7 +6,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class G6_MH_UsuarioActualizarDTO {
+
+public class G6_MH_PerfilUpdateDTO {
     private String nombre;
     private Integer edad;
     private String genero;
