@@ -1,15 +1,13 @@
 package com.upc.mind_health.controllers;
 
-import com.upc.mind_health.dtos.G6_MH_UsuarioRegistroDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import com.upc.mind_health.dtos.G6_MH_PrivacidadDTO;
+import com.upc.mind_health.dtos.*;
 import com.upc.mind_health.services.G6_MH_UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.upc.mind_health.dtos.G6_MH_UsuarioPerfilDTO;
-import com.upc.mind_health.dtos.G6_MH_UsuarioActualizarDTO;
+
 @RestController
 @RequestMapping("/tp/mhg6/mhg6/usuarios")
 @RequiredArgsConstructor
@@ -18,30 +16,61 @@ public class G6_MH_UsuarioController {
 
     private final G6_MH_UsuarioService usuarioService;
 
+    // HU01 - Registro
     @PostMapping("/registro")
     @Operation(summary = "HU01 - Registrar nuevo usuario con verificación de cuenta")
     public ResponseEntity<String> registrar(@RequestBody G6_MH_UsuarioRegistroDTO dto) {
         String resultado = usuarioService.registrar(dto);
         return ResponseEntity.ok(resultado);
     }
-    @GetMapping("/{id}")
-    @Operation(summary = "HU04 - Ver perfil del usuario")
-    public ResponseEntity<G6_MH_UsuarioPerfilDTO> obtenerPerfil(@PathVariable Long id) {
-        return ResponseEntity.ok(usuarioService.obtenerPerfil(id));
-    }
 
-    @PutMapping("/{id}")
-    @Operation(summary = "HU04 - Actualizar información del perfil del usuario")
-    public ResponseEntity<G6_MH_UsuarioPerfilDTO> actualizarPerfil(
-            @PathVariable Long id,
-            @RequestBody G6_MH_UsuarioActualizarDTO dto) {
-        return ResponseEntity.ok(usuarioService.actualizarPerfil(id, dto));
-    }
-
+    // HU01 - Verificar cuenta
     @GetMapping("/verificar/{token}")
     @Operation(summary = "HU01 - Activar cuenta mediante token de verificación")
     public ResponseEntity<String> verificar(@PathVariable String token) {
         String resultado = usuarioService.verificarCuenta(token);
         return ResponseEntity.ok(resultado);
+    }
+
+    // HU02 - Login
+    @PostMapping("/login")
+    @Operation(summary = "HU02 - Inicio de sesión de usuario registrado")
+    public ResponseEntity<G6_MH_AuthResponseDTO> login(@RequestBody G6_MH_LoginDTO dto) {
+        G6_MH_AuthResponseDTO response = usuarioService.login(dto);
+        return ResponseEntity.ok(response);
+    }
+
+    // HU03 - Solicitar recuperación de contraseña
+    @PostMapping("/recuperar-password")
+    @Operation(summary = "HU03 - Solicitar recuperación de contraseña")
+    public ResponseEntity<String> recuperarPassword(@RequestBody G6_MH_RecuperarPasswordDTO dto) {
+        String resultado = usuarioService.solicitarRecuperacion(dto.getCorreo());
+        return ResponseEntity.ok(resultado);
+    }
+
+    // HU03 - Restablecer contraseña
+    @PostMapping("/reset-password")
+    @Operation(summary = "HU03 - Restablecer contraseña con token")
+    public ResponseEntity<String> resetPassword(@RequestBody G6_MH_ResetPasswordDTO dto) {
+        String resultado = usuarioService.resetPassword(dto);
+        return ResponseEntity.ok(resultado);
+    }
+
+    // HU04 - Ver perfil
+    @GetMapping("/{id}")
+    @Operation(summary = "HU04 - Ver perfil del usuario")
+    public ResponseEntity<G6_MH_PerfilResponseDTO> obtenerPerfil(@PathVariable Long id) {
+        G6_MH_PerfilResponseDTO perfil = usuarioService.obtenerPerfil(id);
+        return ResponseEntity.ok(perfil);
+    }
+
+    // HU04 - Editar perfil
+    @PutMapping("/{id}")
+    @Operation(summary = "HU04 - Editar perfil del usuario")
+    public ResponseEntity<G6_MH_PerfilResponseDTO> actualizarPerfil(
+            @PathVariable Long id,
+            @RequestBody G6_MH_PerfilUpdateDTO dto) {
+        G6_MH_PerfilResponseDTO perfil = usuarioService.actualizarPerfil(id, dto);
+        return ResponseEntity.ok(perfil);
     }
 }
