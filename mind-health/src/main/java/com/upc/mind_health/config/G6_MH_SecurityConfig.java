@@ -1,8 +1,8 @@
-package mhg6.config;
+package com.upc.mind_health.config;
 
 import lombok.RequiredArgsConstructor;
-import mhg6.security.G6_MH_JwtFilter;
-import mhg6.services.G6_MH_UsuarioDetailsService;
+import com.upc.mind_health.security.G6_MH_JwtFilter;
+import com.upc.mind_health.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,23 +25,23 @@ public class G6_MH_SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/tp/mhg6/mhg6/usuarios/registro",
-                                "/tp/mhg6/mhg6/usuarios/login",
-                                "/tp/mhg6/mhg6/usuarios/verificar/**",
-                                "/tp/mhg6/mhg6/usuarios/recuperar-password",
-                                "/tp/mhg6/mhg6/usuarios/reset-password",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
-                                "/api-docs/**",
-                                "/v3/api-docs/**"
-                        ).permitAll()
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/tp/mhg6/mhg6/usuarios/registro",
+                    "/tp/mhg6/mhg6/usuarios/login",
+                    "/tp/mhg6/mhg6/usuarios/verificar/**",
+                    "/tp/mhg6/mhg6/usuarios/recuperar-password",
+                    "/tp/mhg6/mhg6/usuarios/reset-password",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html",
+                    "/api-docs/**",
+                    "/v3/api-docs/**"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

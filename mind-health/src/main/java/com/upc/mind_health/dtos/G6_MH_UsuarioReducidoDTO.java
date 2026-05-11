@@ -6,10 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class G6_MH_AuthResponseDTO {
-    private String token;
-    private String mensaje;
+public class G6_MH_UsuarioReducidoDTO {
     private Long idUsuario;
     private String nombre;
-    private String correo;
 }

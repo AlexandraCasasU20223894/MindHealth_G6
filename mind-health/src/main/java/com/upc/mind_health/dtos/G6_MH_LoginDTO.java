@@ -5,11 +5,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class G6_MH_UsuarioRegistroDTO {
-    private String nombre;
+public class G6_MH_LoginDTO {
     private String correo;
     private String contrasena;
-    private Integer edad;
-    private String genero;
 }
