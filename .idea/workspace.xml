@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a0d9a64-5f9a-4512-9a40-5b5a5ffa759e" name="Changes" comment="feat(deployment): add Dockerfile and production profile for Render deployment" />
+    <list default="true" id="4a0d9a64-5f9a-4512-9a40-5b5a5ffa759e" name="Changes" comment="feat(deployment): add Dockerfile and production profile for Render deployment">
+      <change beforePath="$PROJECT_DIR$/mind-health/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mind-health/src/main/resources/application-prod.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +100,7 @@
       <workItem from="1778343664249" duration="3579000" />
       <workItem from="1778348397233" duration="3694000" />
       <workItem from="1778468511800" duration="1974000" />
-      <workItem from="1778535218042" duration="354000" />
+      <workItem from="1778535218042" duration="1161000" />
     </task>
     <task id="LOCAL-00001" summary="init: first commit to enable branching">
       <option name="closed" value="true" />
@@ -172,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778535387031</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat(deployment): add Dockerfile and production profile for Render deployment">
+      <option name="closed" value="true" />
+      <created>1778535705257</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778535705257</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
