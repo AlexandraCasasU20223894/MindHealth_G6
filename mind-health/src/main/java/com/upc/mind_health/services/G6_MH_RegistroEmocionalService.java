@@ -21,7 +21,6 @@ public class G6_MH_RegistroEmocionalService {
     private final G6_MH_RegistroEmocionalRepository registroRepository;
     private final G6_MH_UsuarioRepository usuarioRepository;
 
-    // HU15 - Registrar emoción diaria
     public G6_MH_RegistroEmocionalResponseDTO registrarEmocion(G6_MH_RegistroEmocionalRequestDTO dto) {
         G6_MH_Usuario usuario = usuarioRepository.findById(dto.getIdUsuario())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -38,7 +37,6 @@ public class G6_MH_RegistroEmocionalService {
         return toResponseDTO(registro);
     }
 
-    // HU15 - Obtener historial emocional del usuario
     public List<G6_MH_RegistroEmocionalResponseDTO> obtenerHistorial(Long idUsuario) {
         G6_MH_Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));

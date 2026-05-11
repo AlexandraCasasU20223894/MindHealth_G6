@@ -19,7 +19,6 @@ public class G6_MH_DiarioPersonalController {
 
     private final G6_MH_DiarioPersonalService diarioPersonalService;
 
-    // HU41 - Crear nota
     @PostMapping
     @Operation(summary = "HU41 - Crear nueva nota personal")
     public ResponseEntity<G6_MH_DiarioResponseDTO> crearNota(@RequestBody G6_MH_DiarioRequestDTO dto) {
@@ -27,7 +26,6 @@ public class G6_MH_DiarioPersonalController {
         return ResponseEntity.ok(response);
     }
 
-    // HU41 - Obtener notas del usuario
     @GetMapping("/{idUsuario}")
     @Operation(summary = "HU41 - Obtener historial de notas personales del usuario")
     public ResponseEntity<List<G6_MH_DiarioResponseDTO>> obtenerNotas(@PathVariable Long idUsuario) {

@@ -15,7 +15,6 @@ public class G6_MH_PrivacidadService {
     private final G6_MH_PrivacidadConfigRepository privacidadRepository;
     private final G6_MH_UsuarioRepository usuarioRepository;
 
-    // HU07 - Guardar o actualizar configuración de privacidad
     public G6_MH_PrivacidadDTO guardarPrivacidad(Long idUsuario, G6_MH_PrivacidadDTO dto) {
         G6_MH_Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -36,7 +35,6 @@ public class G6_MH_PrivacidadService {
                 .build();
     }
 
-    // HU07 - Obtener configuración de privacidad
     public G6_MH_PrivacidadDTO obtenerPrivacidad(Long idUsuario) {
         G6_MH_Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));

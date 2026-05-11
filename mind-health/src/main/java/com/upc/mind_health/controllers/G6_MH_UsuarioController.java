@@ -16,7 +16,6 @@ public class G6_MH_UsuarioController {
 
     private final G6_MH_UsuarioService usuarioService;
 
-    // HU01 - Registro
     @PostMapping("/registro")
     @Operation(summary = "HU01 - Registrar nuevo usuario con verificación de cuenta")
     public ResponseEntity<String> registrar(@RequestBody G6_MH_UsuarioRegistroDTO dto) {
@@ -24,7 +23,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(resultado);
     }
 
-    // HU01 - Verificar cuenta
     @GetMapping("/verificar/{token}")
     @Operation(summary = "HU01 - Activar cuenta mediante token de verificación")
     public ResponseEntity<String> verificar(@PathVariable String token) {
@@ -32,7 +30,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(resultado);
     }
 
-    // HU02 - Login
     @PostMapping("/login")
     @Operation(summary = "HU02 - Inicio de sesión de usuario registrado")
     public ResponseEntity<G6_MH_AuthResponseDTO> login(@RequestBody G6_MH_LoginDTO dto) {
@@ -40,7 +37,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(response);
     }
 
-    // HU03 - Solicitar recuperación de contraseña
     @PostMapping("/recuperar-password")
     @Operation(summary = "HU03 - Solicitar recuperación de contraseña")
     public ResponseEntity<String> recuperarPassword(@RequestBody G6_MH_RecuperarPasswordDTO dto) {
@@ -48,7 +44,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(resultado);
     }
 
-    // HU03 - Restablecer contraseña
     @PostMapping("/reset-password")
     @Operation(summary = "HU03 - Restablecer contraseña con token")
     public ResponseEntity<String> resetPassword(@RequestBody G6_MH_ResetPasswordDTO dto) {
@@ -56,7 +51,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(resultado);
     }
 
-    // HU04 - Ver perfil
     @GetMapping("/{id}")
     @Operation(summary = "HU04 - Ver perfil del usuario")
     public ResponseEntity<G6_MH_PerfilResponseDTO> obtenerPerfil(@PathVariable Long id) {
@@ -64,7 +58,6 @@ public class G6_MH_UsuarioController {
         return ResponseEntity.ok(perfil);
     }
 
-    // HU04 - Editar perfil
     @PutMapping("/{id}")
     @Operation(summary = "HU04 - Editar perfil del usuario")
     public ResponseEntity<G6_MH_PerfilResponseDTO> actualizarPerfil(

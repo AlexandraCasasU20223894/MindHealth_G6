@@ -19,7 +19,6 @@ public class G6_MH_RegistroEmocionalController {
 
     private final G6_MH_RegistroEmocionalService registroEmocionalService;
 
-    // HU15 - Registrar emoción
     @PostMapping
     @Operation(summary = "HU15 - Registrar emoción diaria del usuario")
     public ResponseEntity<G6_MH_RegistroEmocionalResponseDTO> registrarEmocion(
@@ -28,7 +27,6 @@ public class G6_MH_RegistroEmocionalController {
         return ResponseEntity.ok(response);
     }
 
-    // HU15 - Obtener historial emocional
     @GetMapping("/{idUsuario}")
     @Operation(summary = "HU15 - Obtener historial emocional del usuario")
     public ResponseEntity<List<G6_MH_RegistroEmocionalResponseDTO>> obtenerHistorial(
